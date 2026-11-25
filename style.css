@@ -1,0 +1,167 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-1: #0b1f3a;
+  --bg-2: #14406e;
+  --card: rgba(255, 255, 255, 0.08);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --screen: #08101d;
+  --text: #ffffff;
+  --muted: #b9cce4;
+  --gold: #f5b83d;
+  --error: #f87171;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px 16px;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+}
+
+.app {
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 18px;
+  font-size: 1.9rem;
+}
+
+.calculator {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 26px;
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- Screen ---------- */
+.screen {
+  background: var(--screen);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  text-align: right;
+}
+
+.expression {
+  min-height: 1.5rem;
+  font-size: 1rem;
+  color: var(--muted);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.display {
+  display: block;
+  margin-top: 2px;
+  min-height: 3.2rem;
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.display.small {
+  font-size: 1.8rem;
+  line-height: 2.2;
+}
+
+.display.error {
+  font-size: 1.4rem;
+  line-height: 2.6;
+  color: var(--error);
+}
+
+/* ---------- Keys ---------- */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  cursor: pointer;
+  height: 62px;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.key:hover {
+  filter: brightness(1.2);
+}
+
+.key:active,
+.key.pressed {
+  transform: scale(0.94);
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.key-num {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.key-util {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.key-op {
+  background: rgba(245, 184, 61, 0.2);
+  border-color: rgba(245, 184, 61, 0.45);
+  color: var(--gold);
+  font-size: 1.6rem;
+}
+
+.key-equals {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg-1);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.key-zero {
+  grid-column: span 2;
+}
+
+/* ---------- Hint ---------- */
+.hint {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+kbd {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key { transition: none; }
+}
